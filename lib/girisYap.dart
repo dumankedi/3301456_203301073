@@ -1,0 +1,172 @@
+import 'package:flutter/material.dart';
+import 'package:hayvan_dostu/main.dart';
+
+class GirisYap extends StatefulWidget {
+  @override
+  State<GirisYap> createState() => _GirisYapState();
+}
+
+class _GirisYapState extends State<GirisYap> {
+  TextEditingController kullaniciAl = new TextEditingController();
+  TextEditingController sifreAl = new TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.indigo[500],
+        body: Center(
+          child: SizedBox(
+            width: double.infinity,
+            height: 450,
+            child: Card(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(
+                      'Giriş Yap',
+                      style: TextStyle(fontSize: 25, color: Colors.black),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Text(
+                      'Kullanıcı Adı: ',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: TextField(
+                      controller: kullaniciAl,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                        ),
+                        labelText: 'Kullanıcı Adınız',
+                        labelStyle: new TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Text(
+                      'Şifre: ',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TextField(
+                      obscureText: true,
+                      controller: sifreAl,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                        ),
+                        labelText: 'Şifreniz',
+                        labelStyle: new TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent,
+                        onPrimary: Colors.white,
+                        padding: EdgeInsets.all(12),
+                      ),
+                      onPressed: () {
+                        if (kullaniciAl.text == '' || sifreAl.text == '') {
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              content: const Text(
+                                'Tüm alanlar doldurulmalıdır!!!!!',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.indigo[500],
+                              elevation: 24.0,
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Tamam'),
+                                  child: const Text(
+                                    'Tamam',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              content: const Text(
+                                'Giriş Başarılı !!!!!',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.indigo[500],
+                              elevation: 24.0,
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HayvanDostu(
+                                                kullanici: kullaniciAl.text,
+                                              )),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Tamam',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(
+                        'Giriş',
+                        style: TextStyle(fontSize: 25),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blueAccent,
+                      onPrimary: Colors.white,
+                      padding: EdgeInsets.all(12),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HayvanDostu()),
+                      );
+                    },
+                    child: Icon(
+                      Icons.home,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
