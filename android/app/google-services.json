@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "398034483393",
+    "project_id": "hayvandostu-b4ce3",
+    "storage_bucket": "hayvandostu-b4ce3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398034483393:android:8734f0136e72d854873c40",
+        "android_client_info": {
+          "package_name": "com.example.hayvan_dostu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398034483393-q3vr2kft99bkvni4o1jencio5idmpani.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMRjz-SQYI5Mt5fBFfhfgkp3jLR4oU2vY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398034483393-q3vr2kft99bkvni4o1jencio5idmpani.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
